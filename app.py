@@ -19,8 +19,6 @@ def add_thousand_separator(eval_ctx, value):
     return result
 
 
-
-
 # Для удобства преобразуем Tours (словарь словарей из исходных данных) в список,
 # предварительно добавив новый атрибут tour
 tours = []
@@ -29,37 +27,31 @@ for tour, dict_tours in data.tours.items():
     tours.append(dict_tours)
 
 
-
-
-
-
 @app.route('/')
 def render_main():
+    tours_top = tours[:] #
+    shuffle(tours_top)
     return render_template('index.html',
                            departures=data.departures,
-                           tours=shuffle(tours)[:6])
+                           tour=False,  # Для подсветки направления в меню при выборе тура
+                           tours=tours_top[:6])
 
 
 @app.route('/departures/<departure>/')
 def render_departures(departure):
     return render_template('departure.html', departure=departure,
                            departures=data.departures,
+                           tour=False,  # Для подсветки направления в меню при выборе тура
                            tours=[d for d in tours if d["departure"] == departure])
 
 
 @app.route('/tours/<int:id>/')
 def render_tours(id):
-    return render_template('tour.html', id=id,  # stars="★★★★★",
+    return render_template('tour.html', id=id,
                            departures=data.departures,
                            tour=[d for d in tours if d["tour"] == id][0])
 
 
-@app.route('/test/')
-def render_test():
-    return data.tours
-
-
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
 
-#print(tours[0])

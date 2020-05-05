@@ -17,7 +17,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             {% for dep,desc in departures.items() %}
-              <li class="nav-item{% if request.path == '/departures/'+ dep+'/' or departures[departure] == dep %} active{% endif %}">
+              <li class="nav-item{% if request.path == '/departures/'+ dep+'/' or tour.departure == dep %} active{% endif %}">
                 <a class="nav-link" href="/departures/{{ dep }}/">{{desc}}</a>
               </li>
             {%  endfor %}

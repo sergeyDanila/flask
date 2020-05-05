@@ -11,7 +11,7 @@
 
           <img src="{{ tour.picture }}" class="card-img-top img-fluid" alt="" style="max-height: 200px;min-height: 200px">
           <div class="card-body">
-            <h2 class="h5 card-title" style="min-height: 3rem ">{{tour.title}}</h2>
+            <h2 class="h5 card-title" style="min-height: 3rem">{{ tour.title }}</h2>
             <p class="card-text">{{ tour.description|truncate(60, False) }}</p>
             <a href="/tours/{{ tour.tour }}/" class="btn btn-sm btn-primary" target="_blank">Подробнее</a>
 
