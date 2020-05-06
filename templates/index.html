@@ -23,7 +23,7 @@
           </div>          
           <div class="card-body">
             <h2 class="h5 card-title" style="min-height: 3rem">{{ tour.title }}</h2>
-            <p class="card-text" >{{ tour.description|truncate(50, False) }}</p>
+            <p class="card-text" style="min-height: 3rem">{{ tour.description|truncate(50, False) }}</p>
             <a href="/tours/{{ tour.tour }}/" class="btn btn-sm btn-primary">Подробнее</a>
           </div>
         </div>
